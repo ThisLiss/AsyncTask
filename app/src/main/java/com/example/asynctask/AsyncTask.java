@@ -10,6 +10,7 @@ public class AsyncTask extends android.os.AsyncTask<String, Integer, String> {
         this.interAsync = interAsync;
     }
 
+
     public interface OnAsync{
         void onProgBar(int pos);
         void onEnd(String url);

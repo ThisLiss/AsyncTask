@@ -8,34 +8,27 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements AsyncTask.OnAsync {
 
     private Button btnStart;
     private Button btnStop;
     private ProgressBar progBar;
-    AsyncTask async;
-    String inputString = "www.ya.ru";
+    public AsyncTask async;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-         async = new AsyncTask(this);
-
         btnStart = findViewById(R.id.btnStart);
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try{
-                async.execute(inputString);
+                progBar.setMax(100);
+                async = new AsyncTask(MainActivity.this);
+                async.execute("www.ya.ru");
                 btnStart.setEnabled(false);
-             }
-                catch (IllegalStateException e){
-                    Toast.makeText(MainActivity.this, "Задача уже была выполнена =(", Toast.LENGTH_SHORT).show();
-                }
             }
         });
         btnStop = findViewById(R.id.btnStop);
