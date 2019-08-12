@@ -23,7 +23,7 @@ public class AsyncTask extends android.os.AsyncTask<String, Integer, String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        if(strings[0] == "www.ya.ru") {
+        if(strings[0].equals("www.ya.ru")) {
             int count = 0;
             for (int i = 0; i < 100; i++) {
                 if (isCancelled()) return null;
